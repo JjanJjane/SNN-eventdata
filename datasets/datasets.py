@@ -31,6 +31,7 @@ def load():
         'CIFAR100': datasets.image_cls,
         #'CIFAR10_DVS': datasets.cifar10_dvs.CIFAR10DVS,
         'CIFAR10_DVS': datasets.cifar10_dvs,
+        # 'CIFAR10_DVS': datasets.cifar10_dvs_DataloaderForTensorflow,
     }
     if dataset_name=='CIFAR10_DVS':
         #dataset = dataset_sel[dataset_name]()
@@ -90,13 +91,22 @@ def load():
         input_size = lib_snn.utils_vis.image_shape_vis(model_name,dataset_name)[0]
         train_ds, valid_ds, test_ds, train_ds_num, valid_ds_num, test_ds_num = dataset.load()
 
+
+    elif dataset_name == 'CIFAR10_DVS_DataloaderForTensorflow':
+        # TODO
+
+        input_size = lib_snn.utils_vis.image_shape_vis(model_name, dataset_name)[0]
+
+        train_ds, valid_ds, test_ds, train_ds_num, valid_ds_num, test_ds_num = dataset.load()
+
     else:
         input_size = lib_snn.utils_vis.image_shape_vis(model_name,dataset_name)[0]
         train_ds, valid_ds, test_ds, train_ds_num, valid_ds_num, test_ds_num = dataset.load(dataset_name,
                                                    batch_size,input_size, input_size_pre_crop_ratio, num_class, train,
                                                    input_prec_mode, preprocessor_input)
 
-    train_steps_per_epoch = train_ds.cardinality().numpy()
+    train_steps_per_epoch = 90
+    # train_steps_per_epoch = train_ds.cardinality().numpy()
 
 
     # data-based weight normalization (DNN-to-SNN conversion)

@@ -13,5 +13,6 @@ from . import image_cls
 
 # dvs
 from . import cifar10_dvs
+from . import cifar10_dvs_DataloaderForTensorflow
 
 from . import preprocessing

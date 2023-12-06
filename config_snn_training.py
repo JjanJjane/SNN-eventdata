@@ -9,7 +9,7 @@ import os
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 #os.environ["CUDA_VISIBLE_DEVICES"]="0,2"
 #os.environ["CUDA_VISIBLE_DEVICES"]="4,7"
-os.environ["CUDA_VISIBLE_DEVICES"]="7"
+os.environ["CUDA_VISIBLE_DEVICES"]="5"
 #os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3,4,5,6,7"
 #os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
 #os.environ["CUDA_VISIBLE_DEVICES"]="0,4"
@@ -18,6 +18,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]="7"
 #os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
 
 
+os.environ['CURL_CA_BUNDLE']=''
 #
 from config import config
 conf = config.flags
@@ -55,7 +56,8 @@ conf = config.flags
 #conf.dataset='CIFAR100'
 #conf.dataset='ImageNet'
 conf.dataset='CIFAR10_DVS'
-conf.time_step = 10 # for CIFAR10_DVS
+# conf.dataset='CIFAR10_DVS_DataloaderForTensorflow'
+conf.time_step = 8 # for CIFAR10_DVS
 
 conf.pooling_vgg = 'avg'
 
