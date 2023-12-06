@@ -89,7 +89,8 @@ def load():
     '''
     train_ds, valid_ds, test_ds, train_ds_num, valid_ds_num, test_ds_num = dataset.load()
 
-    train_steps_per_epoch = train_ds.cardinality().numpy()
+    train_steps_per_epoch = 90
+    # train_steps_per_epoch = train_ds.cardinality().numpy()
 
 
     # data-based weight normalization (DNN-to-SNN conversion)

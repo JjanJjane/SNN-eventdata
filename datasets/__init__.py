@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 #from . import imagenet
-
+from . import module
 from . import datasets
 from . import datasets_bck_eventdata
 
