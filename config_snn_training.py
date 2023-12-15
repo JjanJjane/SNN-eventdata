@@ -35,7 +35,7 @@ conf = config.flags
 #conf.batch_size=200
 #conf.batch_size=300
 #conf.batch_size=180
-#conf.batch_size=120
+conf.batch_size=100
 #conf.time_step=2
 #conf.name_model_load='./models/VGG16_AP_CIFAR100/ep-300_bat-100_opt-SGD_lr-STEP-1E-01_lmb-1E-04_sc_cm_ts-4_nc-R-R_nr-z'
 
@@ -57,7 +57,7 @@ conf = config.flags
 #conf.dataset='ImageNet'
 conf.dataset='CIFAR10_DVS'
 # conf.dataset='CIFAR10_DVS_DataloaderForTensorflow'
-conf.time_step = 8 # for CIFAR10_DVS
+conf.time_step = 12 # for CIFAR10_DVS
 
 conf.pooling_vgg = 'avg'
 

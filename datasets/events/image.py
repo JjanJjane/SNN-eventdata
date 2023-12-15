@@ -130,7 +130,7 @@ def as_frames(
 
 
     # resize image
-    s=32
+    s=48
     images = tf.image.resize(images, (s, s))
 
 
@@ -150,3 +150,14 @@ def as_frames(
     #images = tf.tensor_scatter_nd_update(images,idxs,colors)
 
     return (images, labels)
+def random_horizontal_flip(
+    images,
+    labels,
+    num_class,
+    shape=None,
+    flip_up_down=False,
+):
+    images = tf.image.random_flip_left_right(images)
+    # labels = tf.one_hot(labels, num_class)
+
+    return (images,labels)

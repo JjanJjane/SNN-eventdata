@@ -6,10 +6,11 @@ import events_tfds.events.cifar10_dvs
 #from events_tfds.vis.image import as_frame
 from datasets.events.image import as_frames
 from datasets.events.image import as_frame
+from datasets.events.image import random_horizontal_flip
 from events_tfds.vis.anim import animate_frames
 
 import tensorflow as tf
-
+from keras import layers
 import matplotlib.pyplot as plt
 
 from config import config
@@ -62,9 +63,14 @@ def load():
     #labels = ds[1]
     #as_frames(events,labels,shape=image_shape,num_frames=num_frames)
     #assert False
-
+    # for events, labels in train_ds:
+    #     ds, = train_ds.take(1)
+    #     events = ds[0]
+    #     labes = ds[1]
+    #     ds = layers.RandomFlip("horizontal")
     #train_ds = train_ds.map(lambda events,labels: as_frame(events,labels,shape=image_shape))
     train_ds = train_ds.map(lambda events,labels: as_frames(events,labels,shape=image_shape,num_frames=num_frames))
+    train_ds = train_ds.map(lambda images,labels: random_horizontal_flip(images,labels,10),num_parallel_calls = num_parallel)
     train_ds = train_ds.batch(batch_size)
     train_ds = train_ds.prefetch(num_parallel)
 
@@ -89,7 +95,7 @@ def load():
             plt.imshow(frame)
 
     #valid_ds = train_ds
-    train_ds_num=10000*train_ratio
-    valid_ds_num=10000*(1-train_ratio)
+    train_ds_num=int(10000*train_ratio)
+    valid_ds_num=int(10000-train_ds_num)
 
     return train_ds, valid_ds, valid_ds, train_ds_num, valid_ds_num, valid_ds_num

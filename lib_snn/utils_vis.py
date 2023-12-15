@@ -29,7 +29,7 @@ input_sizes_cifar = {
 }
 
 input_sizes_cifar_dvs = {
-    'VGG16': 32,
+    'VGG16': 48,
 }
 
 #

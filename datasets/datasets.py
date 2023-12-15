@@ -105,8 +105,8 @@ def load():
                                                    batch_size,input_size, input_size_pre_crop_ratio, num_class, train,
                                                    input_prec_mode, preprocessor_input)
 
-    train_steps_per_epoch = 90
-    # train_steps_per_epoch = train_ds.cardinality().numpy()
+    # train_steps_per_epoch = 90
+    train_steps_per_epoch = train_ds.cardinality().numpy()
 
 
     # data-based weight normalization (DNN-to-SNN conversion)
